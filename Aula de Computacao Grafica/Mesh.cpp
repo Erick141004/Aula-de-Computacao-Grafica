@@ -45,6 +45,7 @@ void Mesh::CreateMesh(GLfloat* vertices, unsigned int numVertices, GLuint* indic
 	glBindVertexArray(0);
 }
 
+//TODO: Fazer a renderizacao do cubo
 void Mesh::RenderMesh() {
 	glBindVertexArray(VAO); //Bind o VAO
 
