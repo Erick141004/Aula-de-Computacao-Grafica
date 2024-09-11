@@ -58,23 +58,37 @@ void CreateTriagle() {
 	};
 
 	GLfloat verticesQuad[] = {
-		-1.0f, -1.0f, 0.0f, 
-		-1.0f, 1.0f, 0.0f,
-		1.0f, 1.0f, 0.0f,   
-		1.0f, -1.0f, 0.0f,  
-		-1.0f, -1.0f, 1.0f,
 		-1.0f, 1.0f, 1.0f,
+		-1.0, -1.0f, 1.0f,
+		
 		1.0f, 1.0f, 1.0f,
 		1.0f, -1.0f, 1.0f,
+		
+		-1.0f, 1.0f, -1.0f,
+		-1.0, -1.0f, -1.0f,
+		
+		1.0f, 1.0f, -1.0f,
+		1.0f, -1.0f, -1.0f
 	};
 
 	GLuint indicesQuad[] = {
-		0, 1, 2, 3,
-		0, 3, 4, 6,
-		4, 5, 6, 7,
-		1, 2, 5, 7,
-		2, 3, 4, 5,
-		0, 1, 6, 7
+		0, 1, 5,
+		0, 4, 5,
+		
+		1, 3, 5,
+		3, 5, 7,
+		
+		4, 5, 7,
+		4, 6, 7,
+		
+		0, 2, 6,
+		0, 4, 6,
+		
+		2, 3, 6,
+		3, 6, 7,
+
+		0, 1, 2,
+		1, 2, 3
 	};
 
 	//VAO
@@ -260,7 +274,7 @@ int main()
 		model = glm::scale(model, glm::vec3(0.4, 0.4, 0.4));
 
 		//Rotação
-		model = glm::rotate(model, glm::radians(angle), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 1.0f, 0.0f));
 
 		GLint uniModel = glGetUniformLocation(shaderProgram, "model");
 		glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -275,7 +289,7 @@ int main()
 		model2 = glm::scale(model2, glm::vec3(0.4, 0.4, 0.4));
 
 		//Rotação
-		model2 = glm::rotate(model2, glm::radians(-angle), glm::vec3(0.0f, 1.0f, 0.0f));
+		model2 = glm::rotate(model2, glm::radians(-angle), glm::vec3(1.0f, 1.0f, 0.0f));
 		
 		uniModel = glGetUniformLocation(shaderProgram, "model");
 		glUniformMatrix4fv(uniModel, 1, GL_FALSE, glm::value_ptr(model2));
